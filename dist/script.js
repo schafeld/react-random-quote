@@ -26,32 +26,4 @@ INSTRUCTIONS:
 
 // Once you have read the above messages, you can delete all comments.
 
-
-(function () {
-   'use strict';
-
-  const e = React.createElement;
-
-  class LikeButton extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = { liked: false };
-    }
-
-    render() {
-      if (this.state.liked) {
-        return 'You liked this.';
-      }
-
-      return e(
-        'button',
-        { onClick: () => this.setState({ liked: true }) },
-        'Like'
-      );
-    }
-  }
-
-  const domContainer = document.querySelector('#like-quote');
-  ReactDOM.render(e(LikeButton), domContainer);
-
-}());
+// Scripts with type Babel need local webserver, thus using inline script so far. Lazy me.
