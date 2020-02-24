@@ -60,7 +60,7 @@
 
           return (
             <button onClick={() => this.setState({ liked: true })}>
-              Like
+              <SimpleIcon /> Like
             </button>
           );
         }
@@ -68,6 +68,14 @@
 
       let domContainer = document.querySelector('#like-quote');
       ReactDOM.render(<LikeButton />, domContainer);
+
+      function SimpleIcon () {
+        return (
+          <em> 
+            -X- 
+          </em>
+        );
+      }
 
     }());
   </script>
