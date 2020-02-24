@@ -25,3 +25,33 @@ INSTRUCTIONS:
 // PLEASE NOTE: Adding global style rules using the * selector, or by adding rules to body {..} or html {..}, or to all elements within body or html, i.e. h1 {..}, has the potential to pollute the test suite's CSS. Try adding: * { color: red }, for a quick example!
 
 // Once you have read the above messages, you can delete all comments.
+
+
+(function () {
+   'use strict';
+
+  const e = React.createElement;
+
+  class LikeButton extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { liked: false };
+    }
+
+    render() {
+      if (this.state.liked) {
+        return 'You liked this.';
+      }
+
+      return e(
+        'button',
+        { onClick: () => this.setState({ liked: true }) },
+        'Like'
+      );
+    }
+  }
+
+  const domContainer = document.querySelector('#like-quote');
+  ReactDOM.render(e(LikeButton), domContainer);
+
+}());
