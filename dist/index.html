@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Random Quote Widget (made with React)</title>
-  
+
+  <!-- React Development-->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <!-- React Production
+    <scr ipt crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <scr ipt crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  -->
 
 </head>
 <body>
@@ -17,10 +24,12 @@
   <div id="wrapper">
     <div id="quote-box">
       <div id="text">
-        Todo: Text...
+        <!-- quotes are injected here -->
+        Quote
       </div>
       <div id="author">
-        Todo: Author...
+        <!-- quote author's name is injected here -->
+        Author
       </div>
       <a class="button" id="tweet-quote">Tweet quote</a>
       <button class="button" id="new-quote">New quote</button>
