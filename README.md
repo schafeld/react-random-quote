@@ -1,7 +1,7 @@
 # react-random-quote
-Random quote web app, inspired by FreeCodeCamp React quiz.
 
+Random quote web app, inspired by [FreeCodeCamp React quiz](https://www.freecodecamp.org/learn/front-end-libraries/front-end-libraries-projects/build-a-random-quote-machine). Framework chosen: React (without build tool like npm).
 
+## FreeCodeCamp Test Suite Template (Testing Boilerplate)
 
-# Fork Me! FCC: Test Suite Template (Testing Boilerplate)
- _A Pen created at CodePen.io. Original URL: [https://codepen.io/freeCodeCamp/pen/MJjpwO](https://codepen.io/freeCodeCamp/pen/MJjpwO).
+The implemented test suite can be found at this original CodePen: [https://codepen.io/freeCodeCamp/pen/MJjpwO](https://codepen.io/freeCodeCamp/pen/MJjpwO).
