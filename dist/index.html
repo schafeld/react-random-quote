@@ -62,6 +62,11 @@
 
     console.log("The second quote is '" + QUOTES[1].quote + "' by " + QUOTES[1].author + ".");
 
+    const RANDOM_QUOTE_NUMBER = Math.floor(Math.random() * QUOTES_TOTAL);
+
+    document.getElementById('text').innerText = QUOTES[RANDOM_QUOTE_NUMBER].quote;
+    document.getElementById('author').innerText = QUOTES[RANDOM_QUOTE_NUMBER].author;
+
     (function () {
       'use strict';
 
