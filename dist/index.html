@@ -42,7 +42,25 @@
 
   <script src="./script.js"></script>
 
+  <script type="module">
+    // Import quotes from separate file.
+    // Module import works only through a local server due to CORS restrictions. So use this e.g.:
+    // python -m SimpleHTTPServer 8000
+    // or
+    // php -S localhost:8000
+
+    import { quotes } from './quotes.js';
+    window.DATA_QUOTES = quotes();
+
+    // console.log("First quote is '" + window.DATA_QUOTES["quotes"][0].quote + "' by " + window.DATA_QUOTES["quotes"][0].author + ".");
+  </script>
+
   <script type="text/babel">
+
+    const QUOTES = window.DATA_QUOTES["quotes"];
+    const QUOTES_TOTAL = window.DATA_QUOTES["quotes"].length;
+
+    console.log("The second quote is '" + QUOTES[1].quote + "' by " + QUOTES[1].author + ".");
 
     (function () {
       'use strict';
@@ -69,6 +87,7 @@
       let domContainer = document.querySelector('#like-quote');
       ReactDOM.render(<LikeButton />, domContainer);
 
+
       function SimpleIcon () {
         return (
           <em> 
@@ -76,6 +95,8 @@
           </em>
         );
       }
+
+      // console.log("Can do anything...!");
 
     }());
   </script>
