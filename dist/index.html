@@ -49,7 +49,22 @@
       class App extends React.Component {
         constructor(props) {
           super(props);
-          this.state = { liked: false };
+          this.state = {
+            randomNumber: 0,
+            liked: false,
+            author: 'n/a',
+            quote: 'n/a'
+          };
+        }
+
+        getRandomQuote() {
+          this.setState({
+            randomNumber: Math.floor(Math.random() * QUOTES_TOTAL),
+            quote: QUOTES[this.state.randomNumber].quote,
+            author: QUOTES[this.state.randomNumber].author
+          });
+
+          console.log("The quote number " + (this.state.randomNumber +1) + " is '" + QUOTES[this.state.randomNumber].quote + "' by " + QUOTES[this.state.randomNumber].author + ".");
         }
 
         render() {
@@ -57,18 +72,20 @@
             return 'You liked this.';
           }
 
+          // this.getRandomQuote();
+
           return (
             <div id="quote-box">
               <div id="text">
                 {/* quotes are injected here */}
-                Quote
+                {this.state.quote}
               </div>
               <div id="author">
                 {/* quote author's name is injected here */}
-                Author
+                {this.state.author}
               </div>
-              <a className="button" id="tweet-quote">Tweet quote</a>
-              <button onClick={() => displayRandomQuote()} className="button" id="new-quote">New quote</button>
+              <TweetQuote />
+              <button onClick={() => {this.getRandomQuote()}} className="button" id="new-quote">New quote</button>
               <a className="button" id="like-quote">Like quote</a>
               <button onClick={() => this.setState({ liked: true })}>
                 <SimpleIcon /> Like
@@ -89,15 +106,21 @@
         );
       }
 
+      function TweetQuote () {
+        return (
+          <a href="#tbd" className="button" id="tweet-quote">Tweet quote</a>
+        );
+      }
+
     }());
 
-    function displayRandomQuote () {
-        const RANDOM_QUOTE_NUMBER = Math.floor(Math.random() * QUOTES_TOTAL);
-        document.getElementById('text').innerText = QUOTES[RANDOM_QUOTE_NUMBER].quote;
-        document.getElementById('author').innerText = QUOTES[RANDOM_QUOTE_NUMBER].author;
+    function displayFirstRandomQuote () {
+      const RANDOM_QUOTE_NUMBER = Math.floor(Math.random() * QUOTES_TOTAL);
+      document.getElementById('text').innerText = QUOTES[RANDOM_QUOTE_NUMBER].quote;
+      document.getElementById('author').innerText = QUOTES[RANDOM_QUOTE_NUMBER].author; 
     }
 
-    displayRandomQuote();
+    displayFirstRandomQuote();
 
   </script>
 </body>
