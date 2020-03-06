@@ -24,20 +24,8 @@
 <!-- partial -->
 
 
-  <div id="wrapper">
-    <div id="quote-box">
-      <div id="text">
-        <!-- quotes are injected here -->
-        Quote
-      </div>
-      <div id="author">
-        <!-- quote author's name is injected here -->
-        Author
-      </div>
-      <a class="button" id="tweet-quote">Tweet quote</a>
-      <button class="button" id="new-quote">New quote</button>
-      <a class="button" id="like-quote">Like quote</a>
-    </div>
+  <div id="app">
+    <!-- React app will be injected here. -->
   </div>
 
   <script src="./script.js"></script>
@@ -59,18 +47,12 @@
 
     const QUOTES = window.DATA_QUOTES["quotes"];
     const QUOTES_TOTAL = window.DATA_QUOTES["quotes"].length;
-
-    console.log("The second quote is '" + QUOTES[1].quote + "' by " + QUOTES[1].author + ".");
-
-    const RANDOM_QUOTE_NUMBER = Math.floor(Math.random() * QUOTES_TOTAL);
-
-    document.getElementById('text').innerText = QUOTES[RANDOM_QUOTE_NUMBER].quote;
-    document.getElementById('author').innerText = QUOTES[RANDOM_QUOTE_NUMBER].author;
+    // console.log("The second quote is '" + QUOTES[1].quote + "' by " + QUOTES[1].author + ".");
 
     (function () {
       'use strict';
 
-      class LikeButton extends React.Component {
+      class App extends React.Component {
         constructor(props) {
           super(props);
           this.state = { liked: false };
@@ -82,16 +64,28 @@
           }
 
           return (
-            <button onClick={() => this.setState({ liked: true })}>
-              <SimpleIcon /> Like
-            </button>
+            <div id="quote-box">
+              <div id="text">
+                {/* quotes are injected here */}
+                Quote
+              </div>
+              <div id="author">
+                {/* quote author's name is injected here */}
+                Author
+              </div>
+              <a className="button" id="tweet-quote">Tweet quote</a>
+              <button onClick={() => displayRandomQuote()} className="button" id="new-quote">New quote</button>
+              <a className="button" id="like-quote">Like quote</a>
+              <button onClick={() => this.setState({ liked: true })}>
+                <SimpleIcon /> Like
+              </button>
+            </div>
           );
         }
       }
 
-      let domContainer = document.querySelector('#like-quote');
-      ReactDOM.render(<LikeButton />, domContainer);
-
+      let domContainer = document.querySelector('#app');
+      ReactDOM.render(<App />, domContainer);
 
       function SimpleIcon () {
         return (
@@ -101,9 +95,16 @@
         );
       }
 
-      // console.log("Can do anything...!");
-
     }());
+
+    function displayRandomQuote () {
+        const RANDOM_QUOTE_NUMBER = Math.floor(Math.random() * QUOTES_TOTAL);
+        document.getElementById('text').innerText = QUOTES[RANDOM_QUOTE_NUMBER].quote;
+        document.getElementById('author').innerText = QUOTES[RANDOM_QUOTE_NUMBER].author;
+    }
+
+    displayRandomQuote();
+
   </script>
 </body>
 </html>
